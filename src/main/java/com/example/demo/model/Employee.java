@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -16,11 +19,15 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  long id;
     @Column(name = "first_name")
+    @Size(min =3 , max=50)
     private  String firstName;
     @Column(name = "last_name")
+    @Size(min =3 , max=50)
     private String lastName;
 
     @Column(name = "email_id")
+@Email(message = "Please enter a valid e-mail address")
+    @NotBlank
     private String emailId;
     public Employee(){
 

@@ -3,10 +3,13 @@ package com.example.demo.controller;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Employee;
 import com.example.demo.repository.EmployeeRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +32,9 @@ public class EmployeeController {
     public Employee createEmployee(@RequestBody Employee employee){
         return employeeRepository.save(employee);
     }
+
+
+
     //get employee by id rest api
     @GetMapping("/employees/{id}")
     public ResponseEntity<Employee>  getEmployeeById(@PathVariable Long id){
